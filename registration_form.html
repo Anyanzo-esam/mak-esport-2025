@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mak-Esport 2025 - eFootball Player Registration</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <style>
+        /* Registration Page Specific Styles */
+        .main-content {
+            margin-top: 120px;
+            padding: 40px 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .title-section {
+            text-align: center;
+            margin-bottom: 50px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .form-group {
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 1.1rem;
+            color: #FFD700;
+            margin-bottom: 10px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .form-input, .form-select {
+            width: 100%;
+            padding: 15px 20px;
+            font-size: 1.1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 15px;
+            color: #ffffff;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .form-select {
+            cursor: pointer;
+        }
+
+        .form-select option {
+            background: #1a1a1a;
+            color: #ffffff;
+        }
+
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: #FFD700;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+
+        /* Submit Button */
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #000000;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(255, 215, 0, 0.4);
+            background: linear-gradient(135deg, #FFA500, #FFD700);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Success/Error Messages */
+        .message {
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 600;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        .message.success {
+            background: rgba(76, 175, 80, 0.2);
+            border: 2px solid #4CAF50;
+            color: #4CAF50;
+        }
+
+        .message.error {
+            background: rgba(244, 67, 54, 0.2);
+            border: 2px solid #F44336;
+            color: #F44336;
+        }
+
+        .message.info {
+            background: rgba(33, 150, 243, 0.2);
+            border: 2px solid #2196F3;
+            color: #2196F3;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Form validation styling */
+        .form-input:invalid:not(:focus):not(:placeholder-shown) {
+            border-color: #F44336;
+        }
+
+        .form-input:valid:not(:focus):not(:placeholder-shown) {
+            border-color: #4CAF50;
+        }
+
+        /* Additional info section */
+        .info-section {
+            background: rgba(255, 215, 0, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .info-title {
+            color: #FFD700;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .info-text {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .card {
+                padding: 30px 25px;
+            }
+
+            .form-input, .form-select {
+                padding: 12px 15px;
+                font-size: 1rem;
+            }
+
+            .submit-btn {
+                padding: 15px;
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-content {
+                padding: 20px 15px;
+            }
+
+            .card {
+                padding: 25px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated particles background -->
+    <div class="particles" id="particles"></div>
+    
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <a href="index.html" class="logo">MAK-ESPORT 2025</a>
+            <nav>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="tournament_info_page.html">Tournament Info</a></li>
+                    <li><a href="registration_form.html" class="active">Register</a></li>
+                    <li><a href="tournament_bracket.html">Tournament Bracket</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="nav-toggle" id="navToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Title Section -->
+        <section class="title-section">
+            <h1 class="main-title">PLAYER REGISTRATION</h1>
+            <p class="subtitle">Join the Ultimate eFootball Tournament</p>
+        </section>
+
+        <!-- Info Section -->
+        <section class="info-section">
+            <div class="info-title">📋 Registration Information</div>
+            <div class="info-text">
+                Fill out all fields below to register for Mak-Esport 2025. Your registration details will be sent directly to our tournament organizers at <strong>mak.esport2025@gmail.com</strong>. Make sure all information is accurate as it will be used for tournament communication and prize distribution.
+            </div>
+        </section>
+
+        <!-- Registration Form -->
+        <section class="card">
+            <div id="messageContainer"></div>
+            
+            <form id="registrationForm">
+                <div class="form-group">
+                    <label for="playerName" class="form-label">Full Name *</label>
+                    <input 
+                        type="text" 
+                        id="playerName" 
+                        name="playerName" 
+                        class="form-input" 
+                        placeholder="Enter your full name as it appears on ID" 
+                        required
+                        minlength="2"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="email" class="form-label">Email Address *</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        class="form-input" 
+                        placeholder="Enter your email address" 
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="phone" class="form-label">Phone Number *</label>
+                    <input 
+                        type="tel" 
+                        id="phone" 
+                        name="phone" 
+                        class="form-input" 
+                        placeholder="Enter your phone number (e.g., 0780645026)" 
+                        required
+                        pattern="[0-9]{10,15}"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="age" class="form-label">Age *</label>
+                    <input 
+                        type="number" 
+                        id="age" 
+                        name="age" 
+                        class="form-input" 
+                        placeholder="Enter your age" 
+                        required
+                        min="13"
+                        max="60"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="gamertag" class="form-label">Gaming Username/Gamertag *</label>
+                    <input 
+                        type="text" 
+                        id="gamertag" 
+                        name="gamertag" 
+                        class="form-input" 
+                        placeholder="Enter your gaming username or gamertag" 
+                        required
+                        minlength="3"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="platform" class="form-label">Gaming Platform *</label>
+                    <select id="platform" name="platform" class="form-select" required>
+                        <option value="">Select your gaming platform</option>
+                        <option value="PlayStation 5">PlayStation 5</option>
+                        <option value="PlayStation 4">PlayStation 4</option>
+                        <option value="Xbox Series X/S">Xbox Series X/S</option>
+                        <option value="Xbox One">Xbox One</option>
+                        <option value="PC">PC</option>
+                        <option value="Mobile">Mobile</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="experience" class="form-label">eFootball Experience *</label>
+                    <select id="experience" name="experience" class="form-select" required>
+                        <option value="">Select your experience level</option>
+                        <option value="Beginner (0-6 months)">Beginner (0-6 months)</option>
+                        <option value="Intermediate (6 months - 2 years)">Intermediate (6 months - 2 years)</option>
+                        <option value="Advanced (2-5 years)">Advanced (2-5 years)</option>
+                        <option value="Expert (5+ years)">Expert (5+ years)</option>
+                        <option value="Professional">Professional</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="location" class="form-label">Location/Country *</label>
+                    <input 
+                        type="text" 
+                        id="location" 
+                        name="location" 
+                        class="form-input" 
+                        placeholder="Enter your city/country" 
+                        required
+                    >
+                </div>
+
+
+                <div class="form-group">
+                    <label for="additionalInfo" class="form-label">Additional Information (Optional)</label>
+                    <input 
+                        type="text" 
+                        id="additionalInfo" 
+                        name="additionalInfo" 
+                        class="form-input" 
+                        placeholder="Any additional information or special requests" 
+                    >
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    Register for Tournament
+                </button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">MAK-ESPORT 2025</div>
+            <p class="footer-text">
+                Ready to compete? Register now and secure your spot in the ultimate eFootball tournament.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Create animated particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 40;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 4 + 4) + 's';
+                
+                const size = Math.random() * 3 + 1;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Mobile navigation toggle
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        if (navToggle && navMenu) {
+            navToggle.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+                navToggle.classList.toggle('active');
+            });
+
+            // Close mobile menu when clicking on a link
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                    navToggle.classList.remove('active');
+                });
+            });
+        }
+
+
+        // Show message function
+        function showMessage(message, type) {
+            const messageContainer = document.getElementById('messageContainer');
+            messageContainer.innerHTML = `<div class="message ${type}">${message}</div>`;
+            setTimeout(() => {
+                messageContainer.innerHTML = '';
+            }, 8000);
+        }
+
+        // Form validation
+        function validateForm() {
+            const form = document.getElementById('registrationForm');
+            const inputs = form.querySelectorAll('[required]');
+            let isValid = true;
+            
+            inputs.forEach(input => {
+                if (!input.value.trim()) {
+                    input.style.borderColor = '#F44336';
+                    isValid = false;
+                } else {
+                    input.style.borderColor = 'rgba(255, 215, 0, 0.3)';
+                }
+            });
+            
+            return isValid;
+        }
+
+        // Form submission with comprehensive email
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (!validateForm()) {
+                showMessage('Please fill in all required fields correctly.', 'error');
+                return;
+            }
+            
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Processing Registration...';
+
+            // Get all form data
+            const playerName = document.getElementById('playerName').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const age = document.getElementById('age').value;
+            const gamertag = document.getElementById('gamertag').value;
+            const platform = document.getElementById('platform').value;
+            const experience = document.getElementById('experience').value;
+            const location = document.getElementById('location').value;
+            const additionalInfo = document.getElementById('additionalInfo').value || 'None';
+
+            // Try to send email using EmailJS or fallback to simpler mailto
+            const subject = `MAK-ESPORT 2025 REGISTRATION - ${playerName}`;
+            
+            // Attempt to send via EmailJS if available, otherwise use simple mailto
+            if (typeof emailjs !== 'undefined') {
+                // Use EmailJS for reliable email sending
+                const templateParams = {
+                    player_name: playerName,
+                    player_email: email,
+                    phone: phone,
+                    age: age,
+                    gamertag: gamertag,
+                    platform: platform,
+                    experience: experience,
+                    location: location,
+                    additional_info: additionalInfo,
+                    registration_date: new Date().toLocaleDateString(),
+                    registration_time: new Date().toLocaleTimeString()
+                };
+                
+                emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+                    .then(function(response) {
+                        console.log('Email sent successfully!', response.status, response.text);
+                        showMessage(`
+                            ✅ Registration submitted successfully!<br>
+                            📧 Confirmation email has been sent to the tournament organizers.<br>
+                            📞 For assistance, call: 0780645026
+                        `, 'success');
+                    }, function(error) {
+                        console.log('EmailJS failed, falling back to mailto...', error);
+                        fallbackToMailto();
+                    });
+            } else {
+                // Fallback to mailto with simplified content
+                fallbackToMailto();
+            }
+            
+            function fallbackToMailto() {
+                // Create simplified email content to avoid 400 errors
+                const emailBody = `MAK-ESPORT 2025 TOURNAMENT REGISTRATION
+
+Player: ${playerName}
+Email: ${email}
+Phone: ${phone}
+Age: ${age}
+Gamertag: ${gamertag}
+Platform: ${platform}
+Experience: ${experience}
+Location: ${location}
+Additional Info: ${additionalInfo}
+
+Registration Date: ${new Date().toLocaleDateString()}
+Time: ${new Date().toLocaleTimeString()}
+
+Please confirm this registration for the MAK-ESPORT 2025 eFootball Championship.`;
+                
+                const mailtoLink = `mailto:mak.esport2025@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
+                
+                // Check if the mailto link might be too long
+                if (mailtoLink.length > 2000) {
+                    // Show registration details for manual copy-paste
+                    showMessage(`
+                        ⚠️ Please copy the following details and send to mak.esport2025@gmail.com:<br><br>
+                        <strong>Subject:</strong> ${subject}<br><br>
+                        <strong>Message:</strong><br>
+                        Player: ${playerName}<br>
+                        Email: ${email}<br>
+                        Phone: ${phone}<br>
+                        Gamertag: ${gamertag}<br>
+                        Platform: ${platform}<br>
+                        Experience: ${experience}<br>
+                        Location: ${location}
+                    `, 'info');
+                } else {
+                    window.open(mailtoLink, '_blank');
+                    showMessage(`
+                        ✅ Registration email prepared!<br>
+                        📧 Please send the email that opened in your email client.<br>
+                        📞 For assistance, call: 0780645026
+                    `, 'success');
+                }
+            }
+            
+            // Reset form after successful submission
+            setTimeout(() => {
+                this.reset();
+            }, 2000);
+
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Register for Tournament';
+        });
+
+        // Initialize particles when page loads
+        document.addEventListener('DOMContentLoaded', createParticles);
+        
+        // Add form validation on input
+        document.querySelectorAll('.form-input, .form-select').forEach(input => {
+            input.addEventListener('blur', function() {
+                if (this.hasAttribute('required') && !this.value.trim()) {
+                    this.style.borderColor = '#F44336';
+                } else if (this.value.trim()) {
+                    this.style.borderColor = '#4CAF50';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

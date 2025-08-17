@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mak-Esport 2025 - eFootball Gallery</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <style>
+        /* Gallery Page Specific Styles */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .gallery-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 0;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            animation: slideInUp 1s ease-out;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255, 215, 0, 0.6);
+            box-shadow: 0 25px 50px rgba(255, 215, 0, 0.2);
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-image {
+            transform: scale(1.05);
+        }
+
+        .gallery-caption {
+            padding: 25px;
+        }
+
+        .gallery-title {
+            font-size: 1.5rem;
+            color: #FFD700;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .gallery-description {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+        }
+
+        .hero-section {
+            text-align: center;
+            padding: 80px 0;
+            background: rgba(255, 255, 255, 0.05);
+            margin-bottom: 80px;
+            border-radius: 20px;
+        }
+
+        .hero-section h1 {
+            font-size: 3.5rem;
+            color: #FFD700;
+            margin-bottom: 20px;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+        }
+
+        .hero-section p {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-section p {
+                font-size: 1.1rem;
+                padding: 0 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated particles background -->
+    <div class="particles" id="particles"></div>
+    
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <a href="index.html" class="logo">MAK-ESPORT 2025</a>
+            <nav>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="tournament_info_page.html">Tournament Info</a></li>
+                    <li><a href="registration_form.html">Register</a></li>
+                    <li><a href="tournament_bracket.html">Tournament Bracket</a></li>
+                    <li><a href="gallery.html" class="active">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="nav-toggle" id="navToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero-section fade-in-up">
+            <h1>Tournament Gallery</h1>
+            <p>Capturing the excitement, passion, and glory of Mak-Esport 2025</p>
+        </section>
+
+        <!-- Gallery Grid -->
+        <section class="gallery-grid">
+            <div class="gallery-item">
+                <img src="assets/images/ronaldo.jpeg" alt="Viva Ronaldo" class="gallery-image">
+                <div class="gallery-caption">
+                    <h3 class="gallery-title">Viva Ronaldo</h3>
+                    <p class="gallery-description">Celebrating the greatest of all time - Cristiano Ronaldo's legacy continues to inspire eFootball players worldwide.</p>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="assets/images/messi_new.jpeg" alt="Lionel Messi - The GOAT" class="gallery-image">
+                <div class="gallery-caption">
+                    <h3 class="gallery-title">Messi Magic</h3>
+                    <p class="gallery-description">The genius of Lionel Messi inspires every eFootball match - precision, skill, and football artistry at its finest.</p>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="eFootball Gaming Setup" class="gallery-image">
+                <div class="gallery-caption">
+                    <h3 class="gallery-title">Professional Setup</h3>
+                    <p class="gallery-description">State-of-the-art PlayStation 5 gaming stations where eFootball champions are made.</p>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Tournament Arena" class="gallery-image">
+                <div class="gallery-caption">
+                    <h3 class="gallery-title">The Arena</h3>
+                    <p class="gallery-description">Where 128 players will battle for glory in the ultimate eFootball tournament.</p>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="eFootball Championship" class="gallery-image">
+                <div class="gallery-caption">
+                    <h3 class="gallery-title">Championship Moments</h3>
+                    <p class="gallery-description">Intense eFootball gameplay and clutch moments that define esports excellence.</p>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1556438064-2d7646166914?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Prize Pool" class="gallery-image">
+                <div class="gallery-caption">
+                    <h3 class="gallery-title">$50,000 Prize Pool</h3>
+                    <p class="gallery-description">The ultimate reward awaiting our tournament champion.</p>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Community" class="gallery-image">
+                <div class="gallery-caption">
+                    <h3 class="gallery-title">Gaming Community</h3>
+                    <p class="gallery-description">United by passion, driven by competition - the Mak-Esport family.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">MAK-ESPORT 2025</div>
+            <p class="footer-text">
+                Experience the thrill of competition through our gallery of memorable moments.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Create animated particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 40;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 4 + 4) + 's';
+                
+                const size = Math.random() * 3 + 1;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Mobile navigation toggle
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        if (navToggle && navMenu) {
+            navToggle.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+                navToggle.classList.toggle('active');
+            });
+
+            // Close mobile menu when clicking on a link
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                    navToggle.classList.remove('active');
+                });
+            });
+        }
+
+        // Initialize particles when page loads
+        document.addEventListener('DOMContentLoaded', createParticles);
+
+        // Image loading error fallback
+        document.querySelectorAll('.gallery-image').forEach(img => {
+            img.addEventListener('error', function() {
+                this.src = 'https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';
+                this.alt = 'Tournament Scene';
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mak-Esport 2025 - eFootball Tournament Info</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <style>
+        /* Tournament Page Specific Styles */
+        body {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), 
+                        url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1993&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .title-section {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        /* Tournament Format Essay */
+        .tournament-essay {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 50px;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            animation: slideInUp 1.2s ease-out;
+            position: relative;
+            overflow: hidden;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .tournament-essay::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.05), transparent);
+            animation: shimmer 5s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            50% { left: 100%; }
+            100% { left: 100%; }
+        }
+
+        .essay-title {
+            font-size: 2.8rem;
+            color: #FFD700;
+            margin-bottom: 30px;
+            text-align: center;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .essay-content {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #ffffff;
+            text-align: justify;
+        }
+
+        .essay-content p {
+            margin-bottom: 25px;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: bold;
+        }
+
+        /* Prize Pool Section */
+        .prize-section {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 40px;
+            border: 2px solid rgba(255, 215, 0, 0.4);
+            box-shadow: 0 20px 40px rgba(255, 215, 0, 0.2);
+            margin: 40px auto;
+            max-width: 800px;
+            text-align: center;
+            animation: slideInUp 1.4s ease-out;
+        }
+
+        .prize-title {
+            font-size: 2.2rem;
+            color: #FFD700;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .prize-amount {
+            font-size: 3.5rem;
+            color: #FFD700;
+            font-weight: bold;
+            margin: 20px 0;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .prize-breakdown {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .prize-item {
+            background: rgba(255, 215, 0, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .prize-position {
+            font-size: 1.3rem;
+            color: #FFD700;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .prize-value {
+            font-size: 1.8rem;
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        /* Tournament Stats */
+        .stats-section {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px auto;
+            max-width: 800px;
+            text-align: center;
+            animation: slideInUp 1.6s ease-out;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            color: #FFD700;
+            font-weight: bold;
+            display: block;
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-top: 10px;
+            font-weight: 600;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .tournament-essay {
+                padding: 30px 25px;
+            }
+
+            .essay-title {
+                font-size: 2.2rem;
+            }
+
+            .essay-content {
+                font-size: 1.1rem;
+            }
+
+            .prize-amount {
+                font-size: 2.8rem;
+            }
+
+            .prize-breakdown {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-content {
+                padding: 20px 15px;
+            }
+
+            .essay-title {
+                font-size: 1.8rem;
+            }
+
+            .prize-amount {
+                font-size: 2.2rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // Create animated particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 40;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 4 + 4) + 's';
+                
+                const size = Math.random() * 3 + 1;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Mobile navigation toggle
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        navToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            navToggle.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                navToggle.classList.remove('active');
+            });
+        });
+
+        // Initialize particles when page loads
+        document.addEventListener('DOMContentLoaded', createParticles);
+    </script>
+    <!-- Animated particles background -->
+    <div class="particles" id="particles"></div>
+    
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <a href="index.html" class="logo">MAK-ESPORT 2025</a>
+            <nav>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="tournament_info_page.html" class="active">Tournament Info</a></li>
+                    <li><a href="registration_form.html">Register</a></li>
+                    <li><a href="tournament_bracket.html">Tournament Bracket</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="nav-toggle" id="navToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Title Section -->
+        <section class="title-section">
+            <h1 class="main-title">TOURNAMENT INFORMATION</h1>
+            <p class="subtitle">Format & Competition Details</p>
+        </section>
+
+        <!-- Prize Pool Section -->
+        <section class="prize-section">
+            <div class="prize-title">Prize Pool Information</div>
+            <div class="prize-amount">Coming Soon!</div>
+            <div class="prize-breakdown">
+                <div class="prize-item">
+                    <div class="prize-position">🥇 Champion</div>
+                    <div class="prize-value">TBD</div>
+                </div>
+                <div class="prize-item">
+                    <div class="prize-position">🥈 Runner-up</div>
+                    <div class="prize-value">TBD</div>
+                </div>
+                <div class="prize-item">
+                    <div class="prize-position">🥉 Semi-finalists</div>
+                    <div class="prize-value">TBD</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tournament Stats -->
+        <section class="stats-section">
+            <h2 class="essay-title" style="font-size: 2rem; margin-bottom: 20px;">Tournament Overview</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">128</span>
+                    <div class="stat-label">Participants</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">2</span>
+                    <div class="stat-label">Weeks Duration</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">32</span>
+                    <div class="stat-label">Main Tournament</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">8</span>
+                    <div class="stat-label">Groups of 4</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tournament Format Essay -->
+        <section class="tournament-essay">
+            <h2 class="essay-title">Tournament Format</h2>
+            <div class="essay-content">
+                <p>
+                    The <span class="highlight">Mak-Esport 2025 Tournament</span> adopts an innovative format that combines the excitement of knockout qualification with the strategic depth of the World Cup structure. This unique approach ensures that every match carries significant weight while maintaining the drama and unpredictability that makes football the world's most beloved sport.
+                </p>
+
+                <p>
+                    <strong class="highlight">Phase 1: Knockout Qualification Rounds</strong><br>
+                    Unlike traditional World Cup formats where teams qualify through regional competitions over months, our tournament begins with an intense knockout qualification phase. <span class="highlight">128 registered players</span> will compete in single-elimination matches to earn their place in the main tournament. This qualification phase consists of 64 matches, reducing the field to exactly 32 qualified participants who will advance to the group stage.
+                </p>
+
+                <p>
+                    The qualification knockout system creates an atmosphere of do-or-die intensity from the very first match. Every player must prove their worth under pressure, as there are no second chances. This format eliminates the possibility of complacency and ensures that only the most skilled and mentally tough players advance to represent their "nations" in the main tournament.
+                </p>
+
+                <p>
+                    <strong class="highlight">Phase 2: Group Stage (World Cup Format)</strong><br>
+                    Once qualification is complete, the tournament mirrors the World Cup structure precisely. The 32 qualified players are randomly drawn into <span class="highlight">8 groups of 4 participants each</span>, labeled Groups A through H. Each group operates as a round-robin mini-league where every player faces every other player in their group exactly once.
+                </p>
+
+                <p>
+                    Points are awarded using the standard football system: <span class="highlight">3 points for a victory, 1 point for a draw, and 0 points for a defeat</span>. In case of ties in points, tiebreakers follow World Cup regulations: goal difference, then goals scored, then head-to-head record, and finally, if necessary, a penalty shootout between the tied players.
+                </p>
+
+                <p>
+                    <strong class="highlight">Phase 3: Knockout Tournament</strong><br>
+                    Following the group stage, the top 2 players from each group advance to the <span class="highlight">Round of 16</span>, creating a field of 16 elite competitors. From this point forward, the tournament follows the classic World Cup knockout format: Round of 16, Quarterfinals, Semifinals, Third Place Playoff, and the Grand Final.
+                </p>
+
+                <p>
+                    Each knockout match is a single-elimination encounter where the winner advances and the loser is eliminated. This creates maximum drama and ensures that every goal, every save, and every tactical decision carries enormous weight. The knockout phase embodies the essence of tournament football where legends are born and dreams are either fulfilled or shattered.
+                </p>
+
+                <p>
+                    <strong class="highlight">The Innovation Factor</strong><br>
+                    What sets the Mak-Esport 2025 Tournament apart is this hybrid approach. The initial knockout qualification ensures that every participant has earned their place through pure merit and clutch performance. Meanwhile, the subsequent World Cup format provides the strategic depth and narrative arc that makes international football so compelling.
+                </p>
+
+                <p>
+                    This format guarantees that our champion will have demonstrated excellence across multiple formats: the pressure-cooker environment of knockout qualification, the tactical chess match of group stage play, and the mental fortitude required for knockout tournament success. The result is a tournament that crowns a truly complete champion who has proven their abilities in every conceivable scenario.
+                </p>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
